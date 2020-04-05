@@ -1,0 +1,19 @@
+{
+  "name": "chta_app",
+  "version": "1.0.0",
+  "description": "real time chtat app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node":"6.2.2"
+  },
+  "author": "Venkatesh0625",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "path": "^0.12.7"
+  }
+}
