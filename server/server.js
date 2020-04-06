@@ -14,12 +14,12 @@ var io = socketIO(server);
 
 app.use(express.static(publicPath));
 
-io.on('connection', (socket) => { 
+io.on('connection', (socket) => {  
     console.log('New user connected');
 
     socket.on('createMsg', (message) => {
         console.log('Create Message',message); 
-        io.emit('newMsg', {
+        socket.broadcast.emit('newMsg', {
             from: message.from,
             text: message.text,
             createdAt: new Date().getTime()
