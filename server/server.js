@@ -14,17 +14,16 @@ var io = socketIO(server);
 
 app.use(express.static(publicPath));
 
-io.on('connection', (socket) => {
+io.on('connection', (socket) => { 
     console.log('New user connected');
 
-    socket.emit('newMsg', {
-        from:'John',
-        text:'See you then',
-        createdAt: 123123
-    });
-
-    socket.on('createMsg', (newMsg) => {
-        console.log('Create Message',newMsg);
+    socket.on('createMsg', (message) => {
+        console.log('Create Message',message); 
+        io.emit('newMsg', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        });
     });
 
     socket.on('disconnect',() => {
