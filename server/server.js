@@ -21,24 +21,23 @@ io.on('connection', (socket) => {
 
     socket.broadcast.emit('newMsg', generateMsg('Admin','New User joined'));
 
-    socket.on('createMsg', (message) => {
+    socket.on('createMsg', (message, callback) => {
+
         console.log('Create Message',message); 
-
-
         
         io.emit('newMsg', generateMsg(message.from, message.text));
-
-        // socket.broadcast.emit('newMsg', {
-        //     from: message.from,
-        //     text: message.text,
-        //     createdAt: new Date().getTime()
-        // });
+        callback('This is from server');
+        // socket.broadcast.emit('newMsg', generateMsg(message.from, message.text));
+    
     });
 
     socket.on('disconnect',() => {
         console.log('User was disconnected');
     });
+    
 });
+
+
 server.listen(port, () => {
     console.log(`App is up on port ${port}`);
 }); 
