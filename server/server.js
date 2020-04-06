@@ -16,14 +16,35 @@ app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {  
     console.log('New user connected');
+    
+    socket.emit('newMsg', {
+        from: 'Admin',
+        text: 'Welcome to the chat App',
+        createdAt: new Date().getTime()
+    });
 
+    socket.broadcast.emit('newMsg', {
+        from: 'Admin',
+        text: 'New user joined',
+        createdAt: new Date().getTime()
+    });
+    
     socket.on('createMsg', (message) => {
         console.log('Create Message',message); 
-        socket.broadcast.emit('newMsg', {
+
+
+        
+        io.emit('newMsg', {
             from: message.from,
             text: message.text,
             createdAt: new Date().getTime()
         });
+
+        // socket.broadcast.emit('newMsg', {
+        //     from: message.from,
+        //     text: message.text,
+        //     createdAt: new Date().getTime()
+        // });
     });
 
     socket.on('disconnect',() => {
