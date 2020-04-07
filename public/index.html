@@ -2,24 +2,31 @@
 <html>
     <head>
         <title>Sirius Chat</title> 
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
 
-    <body>
-        <p>Welcome to Sirius Chat</p>
+    <body class="chat">
+        <div  class="chat__sidebar">
+            <h3>People</h3>
+            <div id="users"></div>
+        </div>
 
-        <ol id="messages"></ol>
-        <form id="message-form">
-            <input name="message" type="text" placeholder="Message"/>
-            <button>Send</button>
-        </form>
-        
-        <button id="send-location">Location</button>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="/js/libs/jquery-3.4.1.min.js"></script>
-        <script src="/js/index.js"></script>
+        <div class="chat__main">
+            <ol id="messages" class="chat__messages"></ol>
 
-  
-
+            <div class="chat__footer">
+                <form id="message-form">
+                    <input name="message" type="text" placeholder="Message"/>
+                    <button>Send</button>
+                </form>
+            </div>
+            
+            <button id="send-location">Location</button>
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="/js/libs/jquery-3.4.1.min.js"></script>
+            <script src="/js/index.js"></script>
+            <script src="/js/libs/moment.js"></script>
+        </div>
     </body>
     
 </html>
