@@ -190,3 +190,12 @@ button:disabled {
 		margin-right: 0
 	}
 }
+
+.text-btn {
+	background-color: #ddd;
+	border: none;
+	color: black;
+	padding: 10px 20px;
+	text-align:center;
+	
+}
